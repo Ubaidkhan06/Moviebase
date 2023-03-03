@@ -12,6 +12,14 @@ import Details from './Details'
 const Home = () => {
     const queryClient = useQueryClient()
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 100,
+            left: 100,
+            behavior: 'smooth'
+        });
+    })
+
     const { data: movies, isLoading, error } = useQuery('movieData', getMovies)
     if (isLoading) return (<Loader />)
 
@@ -24,6 +32,7 @@ const Home = () => {
                     variant='h5'
                     fontFamily='fantasy'
                     marginTop={'100px'}
+                    color='white'
                 >
                     Trending Movies this week
                 </Typography>
@@ -45,32 +54,15 @@ const Home = () => {
                     {movies?.map((movie) => (
                         <Grid className='item' item xs={12} sm={6} md={4} lg={3} key={movie.id}>
                             <Link style={{ textDecoration: 'none', color: 'black' }} to={`/${movie.id}`}>
-                                <Card>
+                                <Card className='card'>
                                     <div className='img-container'>
                                         <CardMedia
                                             component="img"
-                                            image={`${imageUrl}/${movie.backdrop_path}`}
+                                            image={`${imageUrl}/${movie.poster_path}`}
                                             alt={movie.name}
                                             className='card-img'
                                         />
                                     </div>
-                                    <CardContent sx={{ backgroundColor: 'black' }}>
-                                        <Typography
-                                            color='white'
-                                            fontWeight={500}
-                                            variant='h6' >
-                                            {movie.title}
-                                        </Typography>
-                                        <Box display='flex' justifyContent={'space-between'} alignItems='center'>
-                                            <Typography
-                                                color='white'
-                                                fontWeight={500}
-                                                variant='h6' >
-                                                {movie.vote_average} &#9733;
-                                            </Typography>
-                                            <Typography color='white'>{new Date(movie.release_date).toDateString()}</Typography>
-                                        </Box>
-                                    </CardContent>
                                 </Card>
                             </Link>
                         </Grid>

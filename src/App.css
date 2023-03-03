@@ -1,12 +1,15 @@
-.card{
-    height: 270px;
-    transition: 0.2s all;
+.card:hover{
+    /* filter :brightness(50%); */
+    transform: scale(1.1);
+    transition: 0.2s all ease-in-out
 }
 
-.card-img:hover{
+/* .card-img:hover{
     filter :brightness(50%);
     transform: scale(1.1);
-}
+    transition: 0.2s all ease-in-out
+
+} */
 
 .img-container{
     overflow: hidden;

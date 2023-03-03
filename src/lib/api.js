@@ -31,7 +31,7 @@ export const getTrending = async (genre) => {
         let result = await axios.get(`${Url}/trending/${genre}/week`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
-        console.log(result?.data?.results)
+        // console.log(result?.data?.results)
         return result?.data?.results
     } catch (err) {
         console.log(err)
@@ -53,6 +53,30 @@ export const getDetails = async (id) => {
 export const getDetailsTV = async (id) => {
     try {
         let result = await axios.get(`${Url}/tv/${id}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        // console.log(result)
+        return result?.data
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+export const getTvReviews = async (id) => {
+    try {
+        let result = await axios.get(`${Url}/tv/${id}/reviews`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        // console.log(result)
+        return result?.data
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+export const getMovieReviews = async (id) => {
+    try {
+        let result = await axios.get(`${Url}/movie/${id}/reviews`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
         // console.log(result)
